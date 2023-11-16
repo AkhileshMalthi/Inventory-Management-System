@@ -2,4 +2,4 @@
 A JavaGUI application to manage inventory 
 
 ## Things to do 
-    [ ] Create Database 
+- [ ] Create Database 
