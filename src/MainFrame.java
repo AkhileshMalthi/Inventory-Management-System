@@ -1,16 +1,15 @@
+import java.awt.FlowLayout;
+
 import javax.swing.JFrame;
 
-public class Home extends JFrame {
-    Home(String title) {
+public class MainFrame extends JFrame {
+    MainFrame(String title) {
         this.setTitle(title);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
-        this.setLayout(null);
+        this.setLayout(new FlowLayout());
         this.setSize(1000,750);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-    }
-    public static void main(String[] args) {
-        new Home("null");
     }
 }
