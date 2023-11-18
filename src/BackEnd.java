@@ -1,7 +1,7 @@
 import java.sql.*;
 
 public class BackEnd {
-    private static final String url = "jdbc:mysql://localhost:3306/mydb";
+    private static final String url = "jdbc:mysql://localhost:3306/inventory";
     private static final String user = "root";
     private static final String password = "AKakhilesh#29";
     private static final Connection con;
@@ -51,7 +51,7 @@ public class BackEnd {
     public static void main(String[] args) throws SQLException {
         if (con != null) {
             System.out.println("Connection Successful");
-            getTableData("sem2_results");
+            getTableData("products");
         }
         else {
             System.out.println("Connection Unsuccessful");
