@@ -23,11 +23,17 @@ public class App {
 
         final int SearchAreaX = 0;
         final int SearchAreaY = 25;
+
         final int OptionsAreaX = 0;
         final int OptionsAreaY = 100;
+
+        final int ResultsAreaX = 50;
+        final int ResultsAreaY = 200;
+        
         final boolean showBorders = false;
 
         Border line = BorderFactory.createLineBorder(Color.WHITE);
+
 
         JPanel searchProduct = new JPanel();
         searchProduct.setBackground(Home.getContentPane().getBackground());
@@ -43,13 +49,12 @@ public class App {
         
         OurButton viewAllProducts = new OurButton("View All Products");
         viewAllProducts.setBounds(650,50,150,50);
+
         
         JPanel options = new JPanel();
         options.setBounds(OptionsAreaX, OptionsAreaY, Home.getWidth(), 100);
         options.setBackground(Home.getContentPane().getBackground());
         options.setLayout(new FlowLayout(FlowLayout.CENTER,5,25));
-        
-        
         
         OurButton listAllProducts = new OurButton("List All Products");
         OurButton addProduct = new OurButton("Add Product");
@@ -57,6 +62,9 @@ public class App {
         OurButton updateCost = new OurButton("Update Cost");
         OurButton deleteProduct = new OurButton("Delete Product");
         OurButton exit = new OurButton("Exit");
+
+        Display results = new Display();
+        results.setBounds(ResultsAreaX,ResultsAreaY,Home.getWidth()-100,400);
         
         if (showBorders) {
             searchProduct.setBorder(line);
@@ -76,8 +84,9 @@ public class App {
 
         Home.add(searchProduct);
         Home.add(options);
+        Home.add(results);
 
-        ImageIcon icon = new ImageIcon("..\\resources\\inventory.png");
+        ImageIcon icon = new ImageIcon("..\\resources\\inventory-management.png");
         Home.setIconImage(icon.getImage());
 
         Home.setVisible(true);
