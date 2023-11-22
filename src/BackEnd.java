@@ -43,7 +43,6 @@ public class BackEnd {
     }
 
     public static void addProduct(String... values) throws SQLException {
-
         StringBuilder query = new StringBuilder("INSERT INTO " + tableName + " VALUES(");
         for (int i = 0; i < values.length; i++) {
             if (i == values.length-1) {
