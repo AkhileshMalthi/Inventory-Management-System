@@ -1,6 +1,5 @@
 {
     "java.project.referencedLibraries": [
-        "lib/mysql-connector-j-8.1.0.jar",
-        "c:\\Users\\naras\\Downloads\\mysql-connector-j-8.2.0\\mysql-connector-j-8.2.0\\mysql-connector-j-8.2.0.jar"
+        "lib/mysql-connector-j-8.1.0.jar"
     ]
 }
