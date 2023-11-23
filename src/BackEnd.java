@@ -1,7 +1,5 @@
 import java.sql.*;
 
-import javax.swing.JOptionPane;
-
 public class BackEnd {
     private static final String url = "jdbc:mysql://localhost:3306/inventory";
     private static final String user = "root";
@@ -10,10 +8,11 @@ public class BackEnd {
     private static final String tableName = "products";
     private static Connection con;
 
-    public static void viewProduct(String id) throws SQLException {
+    public static String viewProduct(String id) throws SQLException {
         String query = "SELECT * FROM "+tableName+" WHERE Id = "+id;
         PreparedStatement stmt = con.prepareStatement(query);
         ResultSet product = stmt.executeQuery();
+        StringBuilder result = new StringBuilder("");
 
         ResultSetMetaData metaData = product.getMetaData();
         int columnCount = metaData.getColumnCount();
@@ -22,16 +21,17 @@ public class BackEnd {
             for (int i = 1; i <= columnCount; i++) {
                 String columnName = metaData.getColumnName(i);
                 Object value = product.getObject(i);
-                System.out.println(columnName + ": " + value);
+                result.append(columnName + ": " + value);
             }
-            System.out.println("--------------------");
         }
+        return result.toString();
     }
 
-    public static void listAllProducts() throws SQLException {
+    public static String listAllProducts() throws SQLException {
         String sql = "SELECT * FROM "+tableName+" limit 10";
         PreparedStatement stmt = con.prepareStatement(sql);
         ResultSet resultSet = stmt.executeQuery();
+        StringBuilder result = new StringBuilder();
 
 // ------------------------------------------------------------------------------------
 //        while (resultSet.next()) {
@@ -56,10 +56,11 @@ public class BackEnd {
             for (int i = 1; i <= columnCount; i++) {
                 String columnName = metaData.getColumnName(i);
                 Object value = resultSet.getObject(i);
-                System.out.println(columnName + ": " + value);
+                result.append(columnName + ": " + value);
             }
             System.out.println("--------------------");
         }
+        return result.toString();
     }
 
     public static void addProduct(String... values) throws SQLException {
@@ -117,24 +118,5 @@ public class BackEnd {
         catch (Exception e) {
             System.out.println(e);
         }
-    }
-
-    public static void main(String[] args) throws SQLException {
-        try {
-            // Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection(url, user, password);
-
-            if (con != null) {
-                System.out.println("Connection Successful");
-                JOptionPane.showMessageDialog(null, "Connection Successful", "DB Connection status", 1);
-
-            } else {
-                System.out.println("Connection Unsuccessful");
-                JOptionPane.showMessageDialog(null, "Connection Unsuccessful", "DB Connection status", 0);
-            }
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-
     }
 }

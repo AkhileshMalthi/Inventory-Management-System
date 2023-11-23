@@ -2,6 +2,9 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -69,6 +72,38 @@ public class App {
             searchProduct.setBorder(line);
             options.setBorder(line);
         }
+
+        viewProduct.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+
+                    String data = BackEnd.viewProduct(GetData.getID());
+                    results.setText(data);
+
+                } catch (SQLException e1) {
+
+                    e1.printStackTrace();
+
+                }
+            }
+        });
+
+        listAllProducts.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    String data = BackEnd.listAllProducts();
+                } catch (SQLException e1) {
+
+                    e1.printStackTrace();
+                    
+                }
+            }
+            
+        });
         
         searchProduct.add(enterId);
         searchProduct.add(searchBox);
