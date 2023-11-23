@@ -6,6 +6,7 @@ public class BackEnd {
     private static final String password = "AKakhilesh#29";
 
     private static final String tableName = "products";
+    private static Connection con;
     
     BackEnd() throws SQLException {
         Connection con = DriverManager.getConnection(url, user, password);
