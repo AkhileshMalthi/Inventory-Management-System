@@ -36,7 +36,6 @@ public class App {
 
         Border line = BorderFactory.createLineBorder(Color.WHITE);
 
-
         JPanel searchProduct = new JPanel();
         searchProduct.setBackground(Home.getContentPane().getBackground());
         searchProduct.setBounds(SearchAreaX,SearchAreaY,Home.getWidth(),75);
@@ -52,7 +51,6 @@ public class App {
         OurButton viewProduct = new OurButton("View All Products");
         viewProduct.setBounds(650,50,150,50);
 
-        
         JPanel options = new JPanel();
         options.setBounds(OptionsAreaX, OptionsAreaY, Home.getWidth(), 100);
         options.setBackground(Home.getContentPane().getBackground());
@@ -78,14 +76,10 @@ public class App {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-
                     String data = BackEnd.viewProduct(GetData.getID());
                     results.setText(data);
-
                 } catch (SQLException e1) {
-
                     e1.printStackTrace();
-
                 }
             }
         });
@@ -95,13 +89,9 @@ public class App {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-
                     String data = BackEnd.listAllProducts();
-
                 } catch (SQLException e1) {
-
                     e1.printStackTrace();
-
                 }
             }
             
