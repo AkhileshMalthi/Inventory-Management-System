@@ -1,4 +1,6 @@
 import java.awt.Dimension;
+import java.awt.Font;
+
 import javax.swing.JTextArea;
 
 public class Display extends JTextArea {
@@ -7,6 +9,7 @@ public class Display extends JTextArea {
 
     Display() {
         this.setText("Our Result here");
+        this.setFont(new Font("Ariel",Font.BOLD,13));
         this.setLineWrap(true); // Enable word wrap
         this.setWrapStyleWord(true); // Wrap at word boundaries
         this.setPreferredSize(new Dimension(800,400));
