@@ -10,5 +10,6 @@ public class MainFrame extends JFrame {
         this.setSize(1000,750);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        this.setVisible(true);
     }
 }

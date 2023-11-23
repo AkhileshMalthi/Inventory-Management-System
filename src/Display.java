@@ -7,8 +7,6 @@ public class Display extends JTextArea {
 
     Display() {
         this.setText("Our Result here");
-        this.setRows(10);
-        this.setColumns(10);
         this.setLineWrap(true); // Enable word wrap
         this.setWrapStyleWord(true); // Wrap at word boundaries
         this.setPreferredSize(new Dimension(800,400));
