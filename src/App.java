@@ -90,6 +90,10 @@ public class App {
             public void actionPerformed(ActionEvent e) {
                 try {
                     String data = BackEnd.listAllProducts();
+                    // System.out.println(data);
+                    // display()
+                    results.setText(data);
+
                 } catch (SQLException e1) {
                     e1.printStackTrace();
                 }

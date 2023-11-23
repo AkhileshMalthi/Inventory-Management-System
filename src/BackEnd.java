@@ -3,14 +3,20 @@ import java.sql.*;
 public class BackEnd {
     private static final String url = "jdbc:mysql://localhost:3306/inventory";
     private static final String user = "root";
-    private static final String password = "AKakhilesh#29";
+    private static final String password = "mysql";
 
     private static final String tableName = "products";
-    private static Connection con;
+
+        private static Connection con ;
+        static {
+            try {
+                con = DriverManager.getConnection(url, user, password);
+            } catch (SQLException e) {
+                e.printStackTrace();
+                // Handle the exception appropriately (e.g., log it)
+            }
+        }
     
-    BackEnd() throws SQLException {
-        Connection con = DriverManager.getConnection(url, user, password);
-    }
 
     public static String viewProduct(String id) throws SQLException {
         String query = "SELECT * FROM "+tableName+" WHERE Id = "+id;
