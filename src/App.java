@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
+import javax.swing.border.EmptyBorder;
 
 /**
  * App
@@ -66,6 +67,11 @@ public class App {
 
         Display results = new Display();
         results.setBounds(ResultsAreaX,ResultsAreaY,Home.getWidth()-100,400);
+
+        int padding = 20;
+        Border paddedBorder = new EmptyBorder(padding, padding, padding, padding);
+
+        results.setBorder(paddedBorder);
         
         if (showBorders) {
             searchProduct.setBorder(line);
