@@ -1,5 +1,5 @@
 package src;
-//sadf
+
 import java.sql.*;
 
 public class BackEnd {
@@ -24,7 +24,7 @@ public class BackEnd {
         String query = "SELECT * FROM "+tableName+" WHERE Id = "+id;
         PreparedStatement stmt = con.prepareStatement(query);
         ResultSet product = stmt.executeQuery();
-        StringBuilder result = new StringBuilder("");
+        StringBuilder result = new StringBuilder();
 
         ResultSetMetaData metaData = product.getMetaData();
         int columnCount = metaData.getColumnCount();
@@ -33,8 +33,9 @@ public class BackEnd {
             for (int i = 1; i <= columnCount; i++) {
                 String columnName = metaData.getColumnName(i);
                 Object value = product.getObject(i);
-                result.append(columnName + ": " + value);
+                result.append(columnName + ": " + value + "\n");
             }
+            result.append("----------------------------");
         }
         return result.toString();
     }
@@ -53,9 +54,9 @@ public class BackEnd {
             for (int i = 1; i <= columnCount; i++) {
                 String columnName = metaData.getColumnName(i);
                 Object value = resultSet.getObject(i);
-                result.append(columnName + ": " + value);
+                result.append(columnName + ": " + value + "\n");
             }
-            System.out.println("--------------------");
+            result.append("--------------------");
         }
         return result.toString();
     }

@@ -11,7 +11,7 @@ public class Display extends JTextArea {
 
     Display() {
         this.setText("Our Result here");
-        this.setFont(new Font("Ariel",Font.BOLD,13));
+        this.setFont(new Font("Ariel",Font.BOLD,25));
         this.setLineWrap(true); // Enable word wrap
         this.setWrapStyleWord(true); // Wrap at word boundaries
         this.setPreferredSize(new Dimension(800,400));
