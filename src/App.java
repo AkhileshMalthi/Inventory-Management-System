@@ -95,16 +95,64 @@ public class App {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
+
                     String data = BackEnd.listAllProducts();
+
                 } catch (SQLException e1) {
 
                     e1.printStackTrace();
-                    
+
                 }
             }
             
         });
-        
+
+        addProduct.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    BackEnd.addProduct(GetData.getID(),GetData.getName(),GetData.getCost(),GetData.getQuantity());
+                } catch (SQLException e1) {
+                    System.out.println("Adding Product Operation failed");
+                    e1.printStackTrace();
+                }
+            }
+            
+        });
+
+        updateQuantity.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    BackEnd.updateQuantity(GetData.getID(), GetData.getQuantity());
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        });
+
+        updateCost.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    BackEnd.updateCost(GetData.getID(), GetData.getCost());
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        });
+
+        exit.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Home.dispose();
+            }
+        });
+
         searchProduct.add(enterId);
         searchProduct.add(searchBox);
         searchProduct.add(viewProduct);

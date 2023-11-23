@@ -33,21 +33,6 @@ public class BackEnd {
         ResultSet resultSet = stmt.executeQuery();
         StringBuilder result = new StringBuilder();
 
-// ------------------------------------------------------------------------------------
-//        while (resultSet.next()) {
-//            int id = resultSet.getInt("id");
-//            String name = resultSet.getString("name");
-//            String college = resultSet.getString("college");
-//            String branch = resultSet.getString("branch");
-//
-//
-//            System.out.println("ID: " + id);
-//            System.out.println("Name: " + name);
-//            System.out.println("College: " + college);
-//            System.out.println("Branch: " + branch);
-//            System.out.println("--------------------");
-//        }
-// -------------------------------------------------------------------------------------
         ResultSetMetaData metaData = resultSet.getMetaData();
         int columnCount = metaData.getColumnCount();
 
