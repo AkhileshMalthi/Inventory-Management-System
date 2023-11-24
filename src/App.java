@@ -5,7 +5,6 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
-
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -31,7 +30,6 @@ public class App {
         final int ResultsAreaY = 200;
 
         final boolean showBorders = false;
-        
 
         Border line = BorderFactory.createLineBorder(Color.WHITE);
 
@@ -65,7 +63,6 @@ public class App {
         Display results = new Display();
         results.setBounds(ResultsAreaX, ResultsAreaY, Home.getWidth() - 100, 400);
 
-        // Home.setVisible(true);
         if (showBorders) {
             searchProduct.setBorder(line);
             options.setBorder(line);
@@ -76,8 +73,13 @@ public class App {
             public void actionPerformed(ActionEvent e) {
                 try {
                     int id = Integer.parseInt(searchBox.getText());
-                    String data = BackEnd.viewProduct(id);
-                    results.setText(data);
+                    if (id != -1) {
+                        String data = BackEnd.viewProduct(id);
+                        results.setText(data);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "View Product operation canceled.", "Info",
+                                JOptionPane.INFORMATION_MESSAGE);
+                    }
                 } catch (NumberFormatException | SQLException e1) {
                     e1.printStackTrace();
                 }
@@ -101,11 +103,35 @@ public class App {
             public void actionPerformed(ActionEvent e) {
                 try {
                     int id = GetData.getID();
+                    if (id == -1) {
+                        JOptionPane.showMessageDialog(null, "Add Product operation canceled.", "Info",
+                                JOptionPane.INFORMATION_MESSAGE);
+                        return; // Cancel the operation
+                    }
+
                     String name = GetData.GetName.getName();
+                    if (name == null) {
+                        JOptionPane.showMessageDialog(null, "Add Product operation canceled.", "Info",
+                                JOptionPane.INFORMATION_MESSAGE);
+                        return; // Cancel the operation
+                    }
+
                     int cost = GetData.getCost();
+                    if (cost == -1) {
+                        JOptionPane.showMessageDialog(null, "Add Product operation canceled.", "Info",
+                                JOptionPane.INFORMATION_MESSAGE);
+                        return; // Cancel the operation
+                    }
+
                     int quantity = GetData.getQuantity();
-                
+                    if (quantity == -1) {
+                        JOptionPane.showMessageDialog(null, "Add Product operation canceled.", "Info",
+                                JOptionPane.INFORMATION_MESSAGE);
+                        return; // Cancel the operation
+                    }
+
                     BackEnd.addProduct(id, name, cost, quantity);
+
                 } catch (NumberFormatException | SQLException e1) {
                     System.out.println("Adding Product Operation failed");
                     e1.printStackTrace();
@@ -118,15 +144,21 @@ public class App {
             public void actionPerformed(ActionEvent e) {
                 try {
                     int id = GetData.getID();
+                    if (id == -1) {
+                        JOptionPane.showMessageDialog(null, "Update Quantity operation canceled.", "Info",
+                                JOptionPane.INFORMATION_MESSAGE);
+                        return; // Cancel the operation
+                    }
+
                     int quantity = GetData.getQuantity();
-                    if(quantity==-1)
-                    {
-                        JOptionPane.showMessageDialog(null, "Update Quantity operation canceled.", "Info", JOptionPane.INFORMATION_MESSAGE);
+                    if (quantity == -1) {
+                        JOptionPane.showMessageDialog(null, "Update Quantity operation canceled.", "Info",
+                                JOptionPane.INFORMATION_MESSAGE);
+                        return; // Cancel the operation
                     }
-                    else{
-BackEnd.updateQuantity(id, quantity);
-                    }
-                    
+
+                    BackEnd.updateQuantity(id, quantity);
+
                 } catch (NumberFormatException e1) {
                     e1.printStackTrace();
                 }
@@ -138,28 +170,45 @@ BackEnd.updateQuantity(id, quantity);
             public void actionPerformed(ActionEvent e) {
                 try {
                     int id = GetData.getID();
+                    if (id == -1) {
+                        JOptionPane.showMessageDialog(null, "Update Cost operation canceled.", "Info",
+                                JOptionPane.INFORMATION_MESSAGE);
+                        return; // Cancel the operation
+                    }
+
                     int cost = GetData.getCost();
+                    if (cost == -1) {
+                        JOptionPane.showMessageDialog(null, "Update Cost operation canceled.", "Info",
+                                JOptionPane.INFORMATION_MESSAGE);
+                        return; // Cancel the operation
+                    }
+
                     BackEnd.updateCost(id, cost);
+
                 } catch (NumberFormatException | SQLException e1) {
                     e1.printStackTrace();
                 }
             }
         });
-        // ... (previous code)
 
         deleteProduct.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
                     int id = GetData.getID();
+                    if (id == -1) {
+                        JOptionPane.showMessageDialog(null, "Delete Product operation canceled.", "Info",
+                                JOptionPane.INFORMATION_MESSAGE);
+                        return; // Cancel the operation
+                    }
+
                     BackEnd.deleteProduct(id);
+
                 } catch (NumberFormatException e1) {
                     e1.printStackTrace();
                 }
             }
         });
-
-// ... (remaining code)
 
         exit.addActionListener(new ActionListener() {
 
