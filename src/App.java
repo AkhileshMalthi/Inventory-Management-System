@@ -46,7 +46,7 @@ public class App {
         JTextField searchBox = new JTextField();
         searchBox.setPreferredSize(new Dimension(200, 30));
 
-        OurButton viewProduct = new OurButton("View All Products");
+        OurButton viewProduct = new OurButton("View Product");
         viewProduct.setBounds(650, 50, 150, 50);
 
         JPanel options = new JPanel();
