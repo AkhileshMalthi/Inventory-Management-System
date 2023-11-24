@@ -10,13 +10,10 @@ import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
-import javax.swing.border.EmptyBorder;
 
-/**
- * App
- */
 public class App {
 
     public static void main(String[] args) {
@@ -32,32 +29,32 @@ public class App {
 
         final int ResultsAreaX = 50;
         final int ResultsAreaY = 200;
-        
+
         final boolean showBorders = false;
+        
 
         Border line = BorderFactory.createLineBorder(Color.WHITE);
 
         JPanel searchProduct = new JPanel();
         searchProduct.setBackground(Home.getContentPane().getBackground());
-        searchProduct.setBounds(SearchAreaX,SearchAreaY,Home.getWidth(),75);
-        searchProduct.setLayout(new FlowLayout(FlowLayout.CENTER,20,0));
-        
+        searchProduct.setBounds(SearchAreaX, SearchAreaY, Home.getWidth(), 75);
+        searchProduct.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 0));
+
         JLabel enterId = new JLabel("Enter Product Id : ");
         enterId.setForeground(Color.WHITE);
-        enterId.setFont(new Font("Ariel",Font.BOLD,20));
-        
+        enterId.setFont(new Font("Ariel", Font.BOLD, 20));
+
         JTextField searchBox = new JTextField();
-        searchBox.setPreferredSize(new Dimension(200,30));
-        searchBox.setFont(new Font("Ariel",Font.BOLD,25));
-        
-        OurButton viewProduct = new OurButton("View Product");
-        viewProduct.setBounds(650,50,150,50);
+        searchBox.setPreferredSize(new Dimension(200, 30));
+
+        OurButton viewProduct = new OurButton("View All Products");
+        viewProduct.setBounds(650, 50, 150, 50);
 
         JPanel options = new JPanel();
         options.setBounds(OptionsAreaX, OptionsAreaY, Home.getWidth(), 100);
         options.setBackground(Home.getContentPane().getBackground());
-        options.setLayout(new FlowLayout(FlowLayout.CENTER,5,25));
-        
+        options.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 25));
+
         OurButton listAllProducts = new OurButton("List All Products");
         OurButton addProduct = new OurButton("Add Product");
         OurButton updateQuantity = new OurButton("Update Quantity");
@@ -66,13 +63,9 @@ public class App {
         OurButton exit = new OurButton("Exit");
 
         Display results = new Display();
-        results.setBounds(ResultsAreaX,ResultsAreaY,Home.getWidth()-100,400);
+        results.setBounds(ResultsAreaX, ResultsAreaY, Home.getWidth() - 100, 400);
 
-        int padding = 20;
-        Border paddedBorder = new EmptyBorder(padding, padding, padding, padding);
-
-        results.setBorder(paddedBorder);
-        
+        // Home.setVisible(true);
         if (showBorders) {
             searchProduct.setBorder(line);
             options.setBorder(line);
@@ -82,68 +75,83 @@ public class App {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    String data = BackEnd.viewProduct(searchBox.getText());
+                    int id = Integer.parseInt(searchBox.getText());
+                    String data = BackEnd.viewProduct(id);
                     results.setText(data);
-                } catch (SQLException e1) {
+                } catch (NumberFormatException | SQLException e1) {
                     e1.printStackTrace();
                 }
             }
         });
 
         listAllProducts.addActionListener(new ActionListener() {
-
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
                     String data = BackEnd.listAllProducts();
-                    // System.out.println(data);
-                    // display()
                     results.setText(data);
-
                 } catch (SQLException e1) {
                     e1.printStackTrace();
                 }
             }
-            
         });
 
         addProduct.addActionListener(new ActionListener() {
-
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    BackEnd.addProduct(GetData.getID(),GetData.getName(),GetData.getCost(),GetData.getQuantity());
-                } catch (SQLException e1) {
+                    int id = GetData.getID();
+                    String name = GetData.GetName.getName();
+                    int cost = GetData.getCost();
+                    int quantity = GetData.getQuantity();
+                    BackEnd.addProduct(id, name, cost, quantity);
+                } catch (NumberFormatException | SQLException e1) {
                     System.out.println("Adding Product Operation failed");
                     e1.printStackTrace();
                 }
             }
-            
         });
 
         updateQuantity.addActionListener(new ActionListener() {
-
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    BackEnd.updateQuantity(GetData.getID(), GetData.getQuantity());
-                } catch (SQLException e1) {
+                    int id = GetData.getID();
+                    int quantity = GetData.getQuantity();
+                    BackEnd.updateQuantity(id, quantity);
+                } catch (NumberFormatException | SQLException e1) {
                     e1.printStackTrace();
                 }
             }
         });
 
         updateCost.addActionListener(new ActionListener() {
-
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    BackEnd.updateCost(GetData.getID(), GetData.getCost());
-                } catch (SQLException e1) {
+                    int id = GetData.getID();
+                    int cost = GetData.getCost();
+                    BackEnd.updateCost(id, cost);
+                } catch (NumberFormatException | SQLException e1) {
                     e1.printStackTrace();
                 }
             }
         });
+        // ... (previous code)
+
+deleteProduct.addActionListener(new ActionListener() {
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        try {
+            int id = GetData.getID();
+            BackEnd.deleteProduct(id);
+        } catch (NumberFormatException | SQLException e1) {
+            e1.printStackTrace();
+        }
+    }
+});
+
+// ... (remaining code)
 
         exit.addActionListener(new ActionListener() {
 
@@ -156,7 +164,7 @@ public class App {
         searchProduct.add(enterId);
         searchProduct.add(searchBox);
         searchProduct.add(viewProduct);
-        
+
         options.add(listAllProducts);
         options.add(addProduct);
         options.add(updateQuantity);
