@@ -31,7 +31,7 @@ public class BackEnd {
                 Object value = product.getObject(i);
                 result.append(columnName + ": " + value + "\n");
             }
-            result.append("--------------------\n");
+            result.append("____________________\n\n");
         }
         return result.toString();
     }
@@ -51,7 +51,7 @@ public class BackEnd {
                 Object value = resultSet.getObject(i);
                 result.append(columnName + ": " + value + "\n");
             }
-            result.append("--------------------\n");
+            result.append("____________________\n\n");
         }
         return result.toString();
     }
