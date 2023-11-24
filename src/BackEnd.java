@@ -5,7 +5,7 @@ import javax.swing.JOptionPane;
 public class BackEnd {
     private static final String url = "jdbc:mysql://localhost:3306/inventory";
     private static final String user = "root";
-    private static final String password = "mysql";
+    private static final String password = "AKakhilesh#29";
 
     private static final String tableName = "products";
 
@@ -33,7 +33,7 @@ public class BackEnd {
                 Object value = product.getObject(i);
                 result.append(columnName + ": " + value + "\n");
             }
-            result.append("--------------------\n");
+            // result.append("____________________\n\n");
         }
         return result.toString();
     }
@@ -53,7 +53,7 @@ public class BackEnd {
                 Object value = resultSet.getObject(i);
                 result.append(columnName + ": " + value + "\n");
             }
-            result.append("--------------------\n");
+            result.append("____________________\n\n");
         }
         return result.toString();
     }

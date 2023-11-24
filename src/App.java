@@ -44,6 +44,7 @@ public class App {
 
         JTextField searchBox = new JTextField();
         searchBox.setPreferredSize(new Dimension(200, 30));
+        searchBox.setFont(new Font("Arial", Font.BOLD, 25));
 
         OurButton viewProduct = new OurButton("View Product");
         viewProduct.setBounds(650, 50, 150, 50);
@@ -155,6 +156,9 @@ public class App {
                         JOptionPane.showMessageDialog(null, "Update Quantity operation canceled.", "Info",
                                 JOptionPane.INFORMATION_MESSAGE);
                         return; // Cancel the operation
+
+                    else{
+                        BackEnd.updateQuantity(id, quantity);
                     }
 
                     BackEnd.updateQuantity(id, quantity);
