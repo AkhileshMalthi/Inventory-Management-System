@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
@@ -104,6 +105,7 @@ public class App {
                     String name = GetData.GetName.getName();
                     int cost = GetData.getCost();
                     int quantity = GetData.getQuantity();
+                
                     BackEnd.addProduct(id, name, cost, quantity);
                 } catch (NumberFormatException | SQLException e1) {
                     System.out.println("Adding Product Operation failed");
@@ -118,8 +120,15 @@ public class App {
                 try {
                     int id = GetData.getID();
                     int quantity = GetData.getQuantity();
-                    BackEnd.updateQuantity(id, quantity);
-                } catch (NumberFormatException | SQLException e1) {
+                    if(quantity==-1)
+                    {
+                        JOptionPane.showMessageDialog(null, "Update Quantity operation canceled.", "Info", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                    else{
+BackEnd.updateQuantity(id, quantity);
+                    }
+                    
+                } catch (NumberFormatException e1) {
                     e1.printStackTrace();
                 }
             }
@@ -145,7 +154,7 @@ public class App {
                 try {
                     int id = GetData.getID();
                     BackEnd.deleteProduct(id);
-                } catch (NumberFormatException | SQLException e1) {
+                } catch (NumberFormatException e1) {
                     e1.printStackTrace();
                 }
             }
