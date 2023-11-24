@@ -107,28 +107,28 @@ public class App {
                     if (id == -1) {
                         JOptionPane.showMessageDialog(null, "Add Product operation canceled.", "Info",
                                 JOptionPane.INFORMATION_MESSAGE);
-                        return; // Cancel the operation
+                        return; 
                     }
 
                     String name = GetData.GetName.getName();
                     if (name == null) {
                         JOptionPane.showMessageDialog(null, "Add Product operation canceled.", "Info",
                                 JOptionPane.INFORMATION_MESSAGE);
-                        return; // Cancel the operation
+                        return; 
                     }
 
                     int cost = GetData.getCost();
                     if (cost == -1) {
                         JOptionPane.showMessageDialog(null, "Add Product operation canceled.", "Info",
                                 JOptionPane.INFORMATION_MESSAGE);
-                        return; // Cancel the operation
+                        return; 
                     }
 
                     int quantity = GetData.getQuantity();
                     if (quantity == -1) {
                         JOptionPane.showMessageDialog(null, "Add Product operation canceled.", "Info",
                                 JOptionPane.INFORMATION_MESSAGE);
-                        return; // Cancel the operation
+                        return; 
                     }
 
                     BackEnd.addProduct(id, name, cost, quantity);
@@ -148,14 +148,15 @@ public class App {
                     if (id == -1) {
                         JOptionPane.showMessageDialog(null, "Update Quantity operation canceled.", "Info",
                                 JOptionPane.INFORMATION_MESSAGE);
-                        return; // Cancel the operation
+                        return; 
                     }
 
                     int quantity = GetData.getQuantity();
                     if (quantity == -1) {
                         JOptionPane.showMessageDialog(null, "Update Quantity operation canceled.", "Info",
                                 JOptionPane.INFORMATION_MESSAGE);
-                        return; // Cancel the operation
+                        return; 
+                    }
 
                     else{
                         BackEnd.updateQuantity(id, quantity);
@@ -177,14 +178,14 @@ public class App {
                     if (id == -1) {
                         JOptionPane.showMessageDialog(null, "Update Cost operation canceled.", "Info",
                                 JOptionPane.INFORMATION_MESSAGE);
-                        return; // Cancel the operation
+                        return; 
                     }
 
                     int cost = GetData.getCost();
                     if (cost == -1) {
                         JOptionPane.showMessageDialog(null, "Update Cost operation canceled.", "Info",
                                 JOptionPane.INFORMATION_MESSAGE);
-                        return; // Cancel the operation
+                        return; 
                     }
 
                     BackEnd.updateCost(id, cost);
@@ -203,7 +204,7 @@ public class App {
                     if (id == -1) {
                         JOptionPane.showMessageDialog(null, "Delete Product operation canceled.", "Info",
                                 JOptionPane.INFORMATION_MESSAGE);
-                        return; // Cancel the operation
+                        return; 
                     }
 
                     BackEnd.deleteProduct(id);

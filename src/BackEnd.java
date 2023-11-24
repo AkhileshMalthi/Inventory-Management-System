@@ -1,15 +1,13 @@
 import java.sql.*;
-
 import javax.swing.JOptionPane;
 
 public class BackEnd {
     private static final String url = "jdbc:mysql://localhost:3306/inventory";
     private static final String user = "root";
     private static final String password = "AKakhilesh#29";
-
     private static final String tableName = "products";
-
     private static Connection con;
+
     static {
         try {
             con = DriverManager.getConnection(url, user, password);
@@ -33,7 +31,6 @@ public class BackEnd {
                 Object value = product.getObject(i);
                 result.append(columnName + ": " + value + "\n");
             }
-            // result.append("____________________\n\n");
         }
         return result.toString();
     }
@@ -68,11 +65,9 @@ public class BackEnd {
             stmt.setInt(4, quantity);
             stmt.executeUpdate();
         } catch (SQLIntegrityConstraintViolationException e) {
-            // The Id already exists
             String errorMessage = "The ID already exists. Please use a different ID.";
             JOptionPane.showMessageDialog(null, errorMessage, "Error", JOptionPane.ERROR_MESSAGE);
         } catch (SQLException e) {
-            // Handle other SQL exceptions
             e.printStackTrace();
         }
     }
@@ -86,7 +81,6 @@ public class BackEnd {
             stmt.executeUpdate();
             int rowsAffected = stmt.executeUpdate();
             if (rowsAffected == 0) {
-                // No rows were affected, meaning the product with the given ID does not exist
                 String errorMessage = "No product found with the given ID.";
                 JOptionPane.showMessageDialog(null, errorMessage, "Error", JOptionPane.ERROR_MESSAGE);
             }
@@ -103,12 +97,10 @@ public class BackEnd {
             stmt.setInt(2, id);
             int rowsAffected = stmt.executeUpdate();
             if (rowsAffected == 0) {
-                // No rows were affected, meaning the product with the given ID does not exist
                 String errorMessage = "No product found with the given ID.";
                 JOptionPane.showMessageDialog(null, errorMessage, "Error", JOptionPane.ERROR_MESSAGE);
             }
         } catch (SQLException e) {
-            // Handle other SQL exceptions
             e.printStackTrace();
         }
     }
@@ -120,14 +112,11 @@ public class BackEnd {
             stmt.setInt(1, id);
             int rowsAffected = stmt.executeUpdate();
             if (rowsAffected == 0) {
-                // No rows were affected, meaning the product with the given ID does not exist
                 String errorMessage = "No product found with the given ID.";
                 JOptionPane.showMessageDialog(null, errorMessage, "Error", JOptionPane.ERROR_MESSAGE);
             }
         } catch (SQLException e) {
-            // Handle other SQL exceptions
             e.printStackTrace();
         }
     }
-
 }

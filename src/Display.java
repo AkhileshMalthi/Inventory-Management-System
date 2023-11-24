@@ -11,8 +11,8 @@ public class Display extends JScrollPane {
     Display() {
         textArea = new JTextArea("Our Result here");
         textArea.setFont(new Font("Arial", Font.BOLD, 25));
-        textArea.setLineWrap(true); // Enable word wrap
-        textArea.setWrapStyleWord(true); // Wrap at word boundaries
+        textArea.setLineWrap(true);
+        textArea.setWrapStyleWord(true);
         textArea.setEditable(false);
 
         this.setViewportView(textArea);
@@ -21,9 +21,5 @@ public class Display extends JScrollPane {
 
     public void setText(String text) {
         textArea.setText(text);
-    }
-
-    public static void main(String[] args) {
-        // You can test the Display class here if needed
     }
 }
