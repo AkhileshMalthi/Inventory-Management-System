@@ -3,7 +3,7 @@ import java.sql.*;
 public class BackEnd {
     private static final String url = "jdbc:mysql://localhost:3306/inventory";
     private static final String user = "root";
-    private static final String password = "mysql";
+    private static final String password = "AKakhilesh#29";
 
     private static final String tableName = "products";
 
@@ -29,8 +29,9 @@ public class BackEnd {
             for (int i = 1; i <= columnCount; i++) {
                 String columnName = metaData.getColumnName(i);
                 Object value = product.getObject(i);
-                result.append(columnName + ": " + value);
+                result.append(columnName + ": " + value + "\n");
             }
+            result.append("--------------------\n");
         }
         return result.toString();
     }
@@ -48,9 +49,9 @@ public class BackEnd {
             for (int i = 1; i <= columnCount; i++) {
                 String columnName = metaData.getColumnName(i);
                 Object value = resultSet.getObject(i);
-                result.append(columnName + ": " + value);
+                result.append(columnName + ": " + value + "\n");
             }
-            System.out.println("--------------------");
+            result.append("--------------------\n");
         }
         return result.toString();
     }
