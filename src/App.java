@@ -125,7 +125,7 @@ public class App {
                         JOptionPane.showMessageDialog(null, "Update Quantity operation canceled.", "Info", JOptionPane.INFORMATION_MESSAGE);
                     }
                     else{
-BackEnd.updateQuantity(id, quantity);
+                        BackEnd.updateQuantity(id, quantity);
                     }
                     
                 } catch (NumberFormatException e1) {
