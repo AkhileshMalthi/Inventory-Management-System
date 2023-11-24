@@ -26,8 +26,7 @@ public class GetData {
             while (true) {
                 name = JOptionPane.showInputDialog(null, "Enter the Name", "Required Detail", 3);
                 
-                if (name == null || !containsDigits(name)) {
-                   
+                if (name != null || !containsDigits(name)) {
                     break;
                 } else {
                     JOptionPane.showMessageDialog(null, "Please enter a valid name (without digits).", "Error", JOptionPane.ERROR_MESSAGE);
@@ -51,17 +50,27 @@ public class GetData {
         while (true) {
             try {
                 String quantityString = JOptionPane.showInputDialog(null, "Enter the Quantity", "Required Detail", 3);
+    
                 if (quantityString == null) {
-                    return -1; 
+                    // User closed the dialog, handle it (e.g., return a special value or show an error message)
+                    quantity = -1; // You can choose an appropriate special value
+                    // JOptionPane.showMessageDialog(null, "Update Quantity operation canceled.", "Info", JOptionPane.INFORMATION_MESSAGE);
+                    break;
+                } else if (!quantityString.isEmpty()) {
+                    quantity = Integer.parseInt(quantityString);
+                    break;
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please enter a valid integer for Quantity.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
-                quantity = Integer.parseInt(quantityString);
-                break;  
+    
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(null, "Please enter a valid integer for Quantity.", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
         return quantity;
     }
+    
+    
 
     public static int getCost() {
         int cost;
