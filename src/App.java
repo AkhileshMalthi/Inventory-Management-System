@@ -138,17 +138,17 @@ public class App {
         });
         // ... (previous code)
 
-deleteProduct.addActionListener(new ActionListener() {
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        try {
-            int id = GetData.getID();
-            BackEnd.deleteProduct(id);
-        } catch (NumberFormatException | SQLException e1) {
-            e1.printStackTrace();
-        }
-    }
-});
+        deleteProduct.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    int id = GetData.getID();
+                    BackEnd.deleteProduct(id);
+                } catch (NumberFormatException | SQLException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        });
 
 // ... (remaining code)
 
