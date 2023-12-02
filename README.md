@@ -3,6 +3,12 @@
 ### Overview
 This Java-based app helps manage inventory records with an easy-to-use interface. It simplifies tasks related to inventory management.
 
+## Sample Inventory
+
+![Table](resources/Table.png)
+
+> For this table we are creating the application
+
 ### Table of Contents
 - Features
 - To-Do List
