@@ -5,10 +5,10 @@ import javax.swing.JOptionPane;
  * The BackEnd class handles database operations for a simple inventory management system.
  */
 public class BackEnd {
-    private static final String url = "jdbc:mysql://localhost:3306/inventory";
-    private static final String user = "root";
-    private static final String password = "AKakhilesh#29";
-    private static final String tableName = "products";
+    private static final String url = "jdbc:mysql://localhost:3306/DATABASE_NAME";
+    private static final String user = "USERNAME";
+    private static final String password = "PASSWORD";
+    private static final String tableName = "TABLE_NAME";
     private static Connection con;
 
     // Static block to establish a connection to the database when the class is loaded
