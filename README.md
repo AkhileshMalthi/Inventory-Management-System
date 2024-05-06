@@ -7,7 +7,6 @@ This Java-based app helps manage inventory records with an easy-to-use interface
 
 ![Table](resources/Table.png)
 
-> For this table we are creating the application
 
 ### Table of Contents
 - Features
