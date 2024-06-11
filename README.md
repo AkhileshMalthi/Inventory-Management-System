@@ -5,7 +5,7 @@ This Java-based app helps manage inventory records with an easy-to-use interface
 
 ## Sample Inventory
 
-![Table](resources/Table.png)
+![Table](resources/Table.png)...
 
 
 ### Table of Contents
